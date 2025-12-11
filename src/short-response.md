@@ -1,6 +1,7 @@
 # Short Responses
 
 For this assessment, aim to write a response with the following qualities:
+
 - [ ] Addresses all parts of the prompt
 - [ ] Accurately uses relevant technical terminology
 - [ ] Is free of grammar and spelling mistakes
@@ -26,7 +27,7 @@ const getLetterGrade = (score) => {
   }
 
   return "Your grade is: " + letter;
-}
+};
 
 console.log(getLetterGrade(95)); // This should print "Your grade is: A"
 console.log(getLetterGrade(82)); // This should print "Your grade is: B"
@@ -42,11 +43,11 @@ console.log(getLetterGrade(65)); // This should print "Your grade is: F"
 
 **Part A:**
 
-Your response...
+The let keyword within each if/else if block causes variable shadowing, which results in the error.
 
 **Part B:**
 
-Your response...
+Fixing this is pretty simple all you need to do is assign the letter variables in the if blocks to the global scope variable. To do this all we need to do is remove "let" from all the if blocks.
 
 ---
 
@@ -69,18 +70,17 @@ console.log(originalSettings.volume);
 
 **Part A:**
 
-Your response...
-
+75 will be logged to the console because objects in JS are reference types, so when you do `const newSettings = orignalSettings;` it doesn't create a copy of orignal settings into new settings, rather it is using the refrence in the memory from the original settings. That's why when we try to modify new settings it will modify the same object, so when `newSettings.volume` is changed to 15 `orignalSettings.volume` is also changed to 15.
 **Part B:**
 
-Your response...
+I would modify this code by making a true copy of the object, I can do this by using the spread operator.
 
 **Corrected Code:**
 
 ```js
 // Fix this code so newSettings is a true copy
 const originalSettings = { volume: 50, brightness: 80 };
-const newSettings = originalSettings;
+const newSettings = { ...originalSettings }; // <-----
 newSettings.volume = 75;
 console.log(originalSettings.volume);
 ```
@@ -90,6 +90,7 @@ console.log(originalSettings.volume);
 ## Prompt 3
 
 Given this array of products and the code using `filter`:
+
 ```js
 const products = [
   { name: "Laptop", price: 1000, inStock: true },
@@ -99,15 +100,16 @@ const products = [
 ];
 
 const itemsInStock = products.filter((product) => {
-  return product.inStock
+  return product.inStock;
 });
 ```
 
 Walk through what happens in the first iteration of filter:
+
 - What is the value of `product`?
 - What gets returned from the callback?
 - What happens with that returned value?
 
 ### Response 3
 
-Your response...
+In the first iteration of filter the value of product is the first element in the product object so it would be ` { name: "Laptop", price: 1000, inStock: true }`, the callback returns true since `product.inStock` for laptop is `true`. Then the returned value is kept and added to the new array.
